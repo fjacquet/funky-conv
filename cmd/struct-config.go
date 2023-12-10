@@ -13,6 +13,9 @@ type Config struct {
 	logFolder struct {
 		LogName string `yaml:"logFolder"`
 	}
+	watch struct {
+		waitInMilliSecs string `yaml:"waitInMilliSecs"`
+	}
 	SMTP struct {
 		Server    string `yaml:"server"`
 		From      string `yaml:"from"`

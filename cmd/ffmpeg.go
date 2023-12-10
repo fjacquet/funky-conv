@@ -1,18 +1,22 @@
 package main
 
 import (
+	"encoding/json"
+	"os"
 	"os/exec"
+	"time"
 )
-
-
 
 // get video informations
 func getVideo(input string) Video {
-	output := "file"+
+	var video Video
+	now := time.Now()
+	output := "file" + now.String() + "json"
 	cmd := exec.Command("ffprobe", "-v", "quiet", "-print_format", "json", "-show_format", "-show_streams", "-print_format", "json", input, "-o", output)
-	err := cmd.Run()
+	cmd.Run()
 
-	output.Unmarshal([]byte(output), &video)
+	json.Unmarshal([]byte(output), &video)
+	os.Remove(output)
 	return video
 }
 

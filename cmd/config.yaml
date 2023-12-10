@@ -4,7 +4,8 @@ smtp:
     rrom: "alert@example.com"
     to: "admin@example.com"
     logSelect: "auth"
-
+watch:
+    waitInMilliSecs: "3000"
 rootFs:
     folder: "root/"
     scanFolder: "root/scan/"
