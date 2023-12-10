@@ -2,35 +2,26 @@ package main
 
 import (
 	"fmt"
-	"io"
-	"log"
 	"os"
-	"os/exec"
 	"time"
 
 	"github.com/alecthomas/kong"
+	"rsc.io/quote/v4"
 )
 
 var (
-	ConfigFile  string
+	// ConfigFile : the special place
+	ConfigFile string
+	// Cfg : active object
 	Cfg         Config
 	programName string
 	cli         struct {
-		Debug  bool          `help:"Enable debug mode."`
+		Debug bool `help:"Enable debug mode."`
+		// Config Sample file
 		Config ConfigCommand `cmd help:"Path to configuration file."`
 	}
 	nbuRoot string
 )
-
-func prepareLogs() {
-	logFile, err := os.OpenFile(Cfg.Server.LogName, os.O_CREATE|os.O_APPEND|os.O_RDWR, 0644)
-	if err != nil {
-		panic(err)
-	}
-	mw := io.MultiWriter(os.Stdout, logFile)
-	log.SetOutput(mw)
-	// log.SetFormatter(&log.JSONFormatter{PrettyPrint: true})
-}
 
 func checkParams() {
 	if len(os.Args) < 2 {
@@ -51,16 +42,17 @@ func checkParams() {
 }
 
 func main() {
-
+	fmt.Println(quote.Go())
 	currentTime := time.Now()
 	var version string = currentTime.Format("2006-01-02T15:04:05")
 
 	// program name management
 	programName = os.Args[0] + "-" + version
+	prepareFS()
 
-	cmd := exec.Command("ffmpeg", "-i", "input.avi", "output.mp4")
-	err := cmd.Run()
-	if err != nil {
-		log.Fatal(err)
-	}
+	// cmd := exec.Command("ffmpeg", "-i", "input.avi", "output.mp4")
+	// err := cmd.Run()
+	// if err != nil {
+	// 	log.Fatal(err)
+	// }
 }
