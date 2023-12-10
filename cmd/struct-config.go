@@ -1,6 +1,13 @@
 package main
 
 type Config struct {
+	SMTP struct {
+		Server    string
+		From      string
+		To        string
+		LogSelect string
+	} `yaml:"smtp"`
+
 	Server struct {
 		Port              string `yaml:"port"`
 		Host              string `yaml:"host"`
