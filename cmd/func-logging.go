@@ -7,18 +7,22 @@ import (
 	log "github.com/sirupsen/logrus"
 )
 
+// InfoLogger : log an info
 func InfoLogger(msg string) {
 	log.WithFields(log.Fields{"job": programName}).Info(msg)
 }
 
+// PanicLoggerErr log a panic error
 func PanicLoggerErr(errMgr error) {
 	log.WithFields(log.Fields{"job": programName}).Panicln(errMgr)
 }
 
+// PanicLoggerStr log a panic stric
 func PanicLoggerStr(msg string) {
 	log.WithFields(log.Fields{"job": programName}).Panicln(msg)
 }
 
+// ProcessError log an error
 func ProcessError(err error) {
 	fmt.Println(err)
 	os.Exit(2)

@@ -4,8 +4,10 @@ smtp:
     rrom: "alert@example.com"
     to: "admin@example.com"
     logSelect: "auth"
-watch:
+watcher:
     waitInMilliSecs: "3000"
+    dotFiles: "false"
+    recursive: "false"
 rootFs:
     folder: "root/"
     scanFolder: "root/scan/"
@@ -13,3 +15,5 @@ rootFs:
     sdFolder: "root/out/480"
     hdFolder: "root/out/720"
     fhdFolder: "root/out/1080"
+logFolder:
+    logName: "root/log/"

@@ -6,7 +6,7 @@ import "time"
 func Pause() {
 	var duration time.Duration
 	var errMsg error
-	duration, errMsg = time.ParseDuration(Cfg.watch.waitInMilliSecs)
+	duration, errMsg = time.ParseDuration(cfg.watcher.waitInMilliSecs)
 	if errMsg != nil {
 		PanicLoggerErr(errMsg)
 	}

@@ -13,8 +13,10 @@ type Config struct {
 	logFolder struct {
 		LogName string `yaml:"logFolder"`
 	}
-	watch struct {
+	watcher struct {
 		waitInMilliSecs string `yaml:"waitInMilliSecs"`
+		DotFiles        bool   `yaml:"dotFiles"`
+		Recursive       bool   `yaml:"recursive"`
 	}
 	SMTP struct {
 		Server    string `yaml:"server"`
